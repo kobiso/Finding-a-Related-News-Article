@@ -23,7 +23,7 @@ def run_quickstart():
     # Instantiates a client
     language_client = language.Client()
 
-    f = open('data/facebook_statuses.csv','r')
+    f = open('data/Facebook_Crawling.csv','r')
     csvReader = csv.reader(f)
     new_rows_list = []
 
@@ -51,7 +51,7 @@ def run_quickstart():
         new_rows_list.append(new_row)
     f.close()
 
-    f2 = open('data/result.csv','w', newline='')
+    f2 = open('data/result_0521.csv','w', newline='')
     writer = csv.writer(f2)
     writer.writerows(new_rows_list)
     # output = csv.DictWriter(f2, delimiter=',', lineterminator='\n')
