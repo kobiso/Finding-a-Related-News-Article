@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import csv
+from collections import Counter
 
 def run_quickstart():
     # [START language_quickstart]
@@ -23,7 +24,7 @@ def run_quickstart():
     # Instantiates a client
     language_client = language.Client()
 
-    f = open('data/Facebook_Crawling.csv','r')
+    f = open('data/170528_Comments.csv','r')
     csvReader = csv.reader(f)
     new_rows_list = []
 
@@ -32,7 +33,11 @@ def run_quickstart():
         # print('Text: {}'.format(text))
         # print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
 
-        if row[0]=='comment: ':
+
+        if "_" not in row[0]:
+            if len(row[1].split()) <4 :
+                continue
+        #if row[0]=='comment: ':
             text = row[1]
             try:
                 document = language_client.document_from_text(text)
@@ -51,7 +56,7 @@ def run_quickstart():
         new_rows_list.append(new_row)
     f.close()
 
-    f2 = open('data/result_0521.csv','w', newline='')
+    f2 = open('data/result_0528.csv','w', newline='')
     writer = csv.writer(f2)
     writer.writerows(new_rows_list)
     # output = csv.DictWriter(f2, delimiter=',', lineterminator='\n')
