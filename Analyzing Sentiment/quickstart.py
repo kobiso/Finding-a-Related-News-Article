@@ -24,9 +24,10 @@ def run_quickstart():
     # Instantiates a client
     language_client = language.Client()
 
-    f = open('data/170606_Comments.csv','r')
+    f = open('data/test_0607.csv','r')
     csvReader = csv.reader(f)
     new_rows_list = []
+    new_row = []
 
     for row in csvReader:
         # print('Text: {}'.format(text))
@@ -54,7 +55,7 @@ def run_quickstart():
         new_rows_list.append(new_row)
     f.close()
 
-    f2 = open('data/result_0606.csv','w', newline='')
+    f2 = open('data/test_result_0607.csv','w', newline='')
     writer = csv.writer(f2)
     writer.writerows(new_rows_list)
     # output = csv.DictWriter(f2, delimiter=',', lineterminator='\n')
